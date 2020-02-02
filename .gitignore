@@ -35,6 +35,14 @@ $RECYCLE.BIN/
 model/Diagram.mwb
 model/Diagram.mwb.bak
 model/Setorial_b3.xlsx
+model/Diagram.mwb.beforefix
+
+# front_end
+front_end/*
+front_end
+
+# python cache
+model/__pycache__/*
 
 # Windows Installer files
 *.cab

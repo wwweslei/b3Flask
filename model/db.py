@@ -2,7 +2,7 @@ import datetime
 import mysql.connector
 from collections import namedtuple
 
-class Db:
+class Query:
     def __init__(self):
         self.cnx = mysql.connector.connect(
         user='root', password='password', database='market')
@@ -17,10 +17,10 @@ class Db:
         self.query = ("select * from market.position")
         self.cursor.execute(self.query)
         self.closeDb
-        return [self.positions._make(x) for x in self.cursor]
+        return [self.positions._make(ticket) for ticket in self.cursor]
         
 
 if __name__ == "__main__":
-    db = Db()
-    print(db.position())
+    db = Query()
+    print([x.ticket for x in db.position()])
 

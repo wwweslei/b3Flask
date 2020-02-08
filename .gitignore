@@ -9,6 +9,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.vscode
 settings.json
 
 ### VisualStudioCode Patch ###
@@ -35,17 +36,9 @@ $RECYCLE.BIN/
 model/Diagram.mwb
 model/Diagram.mwb.bak
 model/Setorial_b3.xlsx
-<<<<<<< HEAD
 model/Diagram.mwb.beforefix
+model/__pycache__
 
-# front_end
-front_end/*
-front_end
-
-# python cache
-model/__pycache__/*
-=======
->>>>>>> 8a32f30b99a2a9551c918089a305a39a7389cb98
 
 # Windows Installer files
 *.cab
@@ -56,6 +49,15 @@ model/__pycache__/*
 
 # Windows shortcuts
 *.lnk
+
+# python 
+
+__pycache__*
+#study
+study.py 
+study.ipynb
+#front End
+front_end
 
 # End of https://www.gitignore.io/api/windows,visualstudiocode
 

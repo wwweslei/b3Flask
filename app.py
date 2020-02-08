@@ -1,17 +1,14 @@
 from flask import Flask, render_template
-from model.db import Query
+import core
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Faça. Ou não faça. Não existe a tentativa.'
 app.config["DEBUG"] = True
 
 
-
-
 @app.route("/")
 def home():
-    d = [356.56, 569.58, 365.56]
-    position = Query()
-    return render_template("index.html", position = position.position(), d = d )
+    position = core.get_value_positions()
+    return render_template("index.html", position=position)
 
 
 @app.errorhandler(404)

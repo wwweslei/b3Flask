@@ -22,7 +22,7 @@
                         <div class="col mr-2">
                             <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
                                 <span>Earnings (daily)</span></div>
-                            <div class="text-dark font-weight-bold h5 mb-0"><span>$568.33</span></div>
+                            <div class="text-dark font-weight-bold h5 mb-0"><span>$</span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
@@ -233,46 +233,21 @@
             </div>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="text-primary font-weight-bold m-0">Indicators<br></h6>
+                    <h6 class="text-primary font-weight-bold m-0">Positions<br></h6>
                 </div>
                 <ul class="list-group list-group-flush">
+                    {% for position in position %}
                     <li class="list-group-item">
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
-                                <h6 class="mb-0"><strong>S&amp;P 500</strong></h6><span class="text-xs">10:30 AM</span>
+                                <h6 class="mb-0"><strong>{{position.ticket}}</strong></h6><span class="text-xs">Last Value $ {{"{:.2f}".format(position.value)}}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
-                                        type="checkbox" id="formCheck-1"><label class="custom-control-label"
-                                        for="formCheck-1"></label></div>
+                                <div class="custom-control custom-checkbox"><span class="text-xs">Total Value $ {{"{:.2f}".format(position.value)}}</span></div>
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col mr-2">
-                                <h6 class="mb-0"><strong>IFIX</strong></h6><span class="text-xs">11:30
-                                    AM</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
-                                        type="checkbox" id="formCheck-2"><label class="custom-control-label"
-                                        for="formCheck-2"></label></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col mr-2">
-                                <h6 class="mb-0"><strong>SMALL 11</strong></h6><span class="text-xs">12:30 AM</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
-                                        type="checkbox" id="formCheck-3"><label class="custom-control-label"
-                                        for="formCheck-3"></label></div>
-                            </div>
-                        </div>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

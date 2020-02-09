@@ -22,5 +22,13 @@ def query_view_position():
     return [list(position) for position in cursor]
 
 
+def query_view_position_date():
+    query_view = ("select * from market.position_date")
+    cursor.execute(query_view)
+    cnx.close()
+    return [list(position) for position in cursor]
+
+
 if __name__ == "__main__":
-    print(query_view_position())
+    # print(query_view_position())
+    print(query_view_position_date())

@@ -58,8 +58,10 @@ study.py
 study.ipynb
 #front End
 front_end
-
+#Others
+.pytest_cache/
 /tools
+
 
 # End of https://www.gitignore.io/api/windows,visualstudiocode
 

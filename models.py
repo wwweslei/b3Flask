@@ -1,18 +1,10 @@
 from mysql.connector import errorcode
 import mysql.connector
-from collections import namedtuple
+import config
 
-
-config = {
-    'user': 'root',
-    'password': 'password',
-    'database': 'market',
-    'raise_on_warnings': True,
-    'auth_plugin': 'mysql_native_password'
-}
 
 try:
-    cnx = mysql.connector.connect(**config)
+    cnx = mysql.connector.connect(**config.config_db)
 except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password")
@@ -23,15 +15,12 @@ except mysql.connector.Error as err:
 cursor = cnx.cursor()
 
 
-def position():
-    positions = namedtuple(
-        'positions', ['id', 'ticket', 'amount', 'average', 'total'])
-    query = ("select * from market.position")
-    cursor.execute(query)
-    # cursor.close()
+def query_view_position():
+    query_view = ("select * from market.position")
+    cursor.execute(query_view)
     cnx.close()
-    return [positions._make(ticket) for ticket in cursor]
+    return [list(position) for position in cursor]
 
 
 if __name__ == "__main__":
-    print(position())
+    print(query_view_position())

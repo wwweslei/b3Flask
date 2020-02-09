@@ -7,7 +7,7 @@ app.config["DEBUG"] = True
 
 @app.route("/")
 def home():
-    position = core.get_value_positions()
+    position = core.get_position()
     return render_template("index.html", position=position)
 
 

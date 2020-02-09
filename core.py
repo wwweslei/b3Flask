@@ -15,12 +15,27 @@ def get_last_price(ticket):
         return 3.14
 
 
-def get_value_positions():
-    position = [x.ticket for x in models.position()]
-    stock = namedtuple('stock', ['ticket', 'value'])
-    values = [get_last_price(x) for x in position]
-    return [stock(*ticket) for ticket in zip(position, values)]
+def get_tickets():
+    return [ticket[1] for ticket in models.query_view_position()]
+
+
+def get_value_tickets():
+    return[get_last_price(ticket) for ticket in get_tickets()]
+
+
+def union_ticket_and_value():
+    positions = models.query_view_position()
+    values = get_value_tickets()
+    for x in range(len(positions)):
+        positions[x].append(values[x])
+    return positions
+
+
+def get_position():
+    positions = namedtuple('positions', ['id', 'ticket', 'amount',
+                                         'average', 'total', 'last_value'])
+    return [positions._make(ticket) for ticket in union_ticket_and_value()]
 
 
 if __name__ == "__main__":
-    print(get_value_positions())
+    print(get_position())

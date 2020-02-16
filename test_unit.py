@@ -13,10 +13,10 @@ def test_core_get_last_price():
 
 
 def test_core_ticket():
-    assert core.get_tickets()
+    assert core.tickets()
 
 
-def test_get_value_tickets():
+def value_tickets():
     assert core.get_value_tickets()
 
 
@@ -33,4 +33,8 @@ def test_query_view_position_date():
 
 
 def test_get_day_price():
-    assert core.get_day_price("vvar3", "2020-02-03") == 14.49
+    assert core.get_day_price("vvar3", "2020-02-03") == 14.489999771118164
+
+
+def test_ibov_value():
+    assert str(type(core.ibov_value())) == "<class 'core.ibov'>"
